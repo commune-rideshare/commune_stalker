@@ -1,0 +1,38 @@
+//
+// Typography
+//
+
+$font-size: 12px;
+$line-height: 14px;
+
+//
+// Colors
+//
+
+$background-color: #fff;
+$main-color: #fff;
+$overlay-color: rgba(255,255,255,0.8);
+$origin-color: #FFC107;
+$destination-color: #009688;
+
+$passenger-color: #fdef50;
+$driver-color: rgba(255,255,255,1);
+$ride-color: #3396ce;
+
+
+//
+// Space
+//
+
+$panel-width: 300px;
+
+//
+//  Breakpoints
+//
+
+$breakpoints: (
+  'small': (max-width: 700px),
+  'medium': (max-width: 1000px),
+  'large': (max-width: 1600px),
+  'short': (max-height: 600px),
+);

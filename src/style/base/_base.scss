@@ -1,0 +1,274 @@
+* {
+  &::selection {
+    background: $main-color;
+    color: $background-color;
+  }
+}
+
+body {
+  background: $background-color;
+  color: $main-color;
+  font-size: $font-size;
+  line-height: $line-height;
+  overflow: hidden;
+  font-family: "SanFranciscoDisplay-Light", sans-serif;
+  @include screen-size('small') {}
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+  &:visited {
+    color: $main-color;
+  }
+  &:hover {
+    color: $main-color;
+  }
+  &:active {
+    color: $main-color;
+  }
+}
+
+.map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $overlay-color;
+  z-index: 100;
+  display: none;
+}
+
+strong {
+  font-family: "SanFranciscoDisplay-Medium", sans-serif;
+}
+
+.container {
+  margin-top: 10%;
+}
+
+.info-box {
+  position: fixed;
+  z-index: 10;
+  width: $panel-width;
+  right: 0;
+  height: 150px;
+  //  max-height: 25vh;
+  padding: 5px;
+  top: 30px;
+  width: calc(100% / 3);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  opacity: 0.9;
+  @include hide-scroll;
+  &.active {
+    height: 100%;
+  }
+}
+
+.drivers {
+  left: 0;
+  background: $driver-color;
+  color: black !important;
+}
+
+.riders {
+  left: calc(100% / 1.5);
+  background: $passenger-color;
+  color: black !important;
+}
+
+.rides {
+  left: calc(100% / 3);
+  background: $ride-color;
+  color: black !important;
+}
+
+.stats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background: black;
+  display: block;
+  opacity: 1;
+  div {
+    text-align: center;
+    display: inline;
+    width: calc(100% / 3);
+    float: left;
+    line-height: 30px;
+  }
+}
+
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background: white;
+  display: block;
+  opacity: 1;
+  display: none;
+  span {
+    margin-right: 100px;
+    float: left;
+  }
+}
+
+.panel {
+  margin: 10px;
+  background: grey;
+  padding: 10px;
+  transition: all 0.5s ease;
+  border-radius: 2px;
+  transition: all 1s ease;
+  .origin {
+    background: $origin-color;
+    color: black;
+  }
+  .destination {
+    background: $destination-color;
+    color: black;
+  }
+  &.complete {
+    transition: all 1s ease;
+    opacity: 0.4;
+    .origin {
+      background: white;
+    }
+    .destination {
+      background: white;
+    }
+  }
+}
+
+#app {
+  display: none;
+}
+
+#start {
+  @include center;
+  width: 100vw;
+  height: 100vh;
+  background: $passenger-color;
+  color: black;
+  font-size: 32px;
+  line-height: 100vh;
+  border-radius: 0;
+}
+
+.logo {
+  width: 200px;
+  max-width: 90%;
+  fill: grey;
+  transition: fill 0.4s ease-out;
+  &:hover {
+    transition: fill 0.1s ease-in;
+    fill: white;
+  }
+}
+
+.corner-logo {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+}
+
+.bottom {
+  fill: $passenger-color !important;
+}
+
+tbody {
+  border-top: 0 !important;
+}
+
+.log {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  width: 300px;
+  z-index: 10000;
+  pointer-events: none;
+  display: table;
+  div {
+    background: white;
+    color: black;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: none;
+    vertical-align: bottom;
+    &:nth-child(-n+1) {
+      display: table-cell;
+    }
+    &.request {
+      background: $passenger-color;
+    }
+    &.accept {
+      background: $driver-color;
+    }
+    &.drop-off {
+      background: $ride-color;
+    }
+    &.pick-up {
+      background: $ride-color;
+    }
+    &.no-drivers {
+      background: red;
+      color: white;
+    }
+  }
+}
+
+.ownership {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background: black;
+  z-index: 1000;
+  display: block;
+  text-align: center;
+  .own-drivers {
+    height: 20px;
+    width: 33%;
+    float: left;
+    height: 100%;
+  }
+  .own-bar {
+    height: 12px;
+    width: 100%;
+    float: left;
+    background: $passenger-color;
+    ;
+  }
+  .own-riders {
+    height: 20px;
+    width: 33%;
+    float: right;
+    height: 100%;
+  }
+}
+
+#own-inner {
+  height: 100%;
+  width: 50%;
+  background: $driver-color;
+}
