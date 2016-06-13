@@ -2,14 +2,15 @@
 /*global $, jQuery*/
 
 var config = require("./config"),
-  driver = require("./driver"),
-  rider = require("./rider"),
-  mapboxgl = require('mapbox-gl'),
-  MapboxClient = require('mapbox'),
-  turf = require('turf'),
-  Chance = require('chance'),
-  chance = new Chance(),
-  geohash = require('ngeohash');
+    driver = require("./driver"),
+    rider = require("./rider"),
+    names = require("./names"),
+    mapboxgl = require('mapbox-gl'),
+    MapboxClient = require('mapbox'),
+    turf = require('turf'),
+    Chance = require('chance'),
+    chance = new Chance(),
+    geohash = require('ngeohash');
 
 var city = {
   totalShares: 0,
@@ -47,7 +48,7 @@ var city = {
           parent.drivers.push(driver(
             [res.origin.geometry.coordinates[0], res.origin.geometry.coordinates[1]],
             chance.guid(),
-            chance.name()));
+            names.getRandomName()));
 
         });
 
@@ -79,7 +80,7 @@ var city = {
           parent.riders.push(rider(
             [res.origin.geometry.coordinates[0], res.origin.geometry.coordinates[1]],
             chance.guid(),
-            chance.name()));
+            names.getRandomName()));
 
         });
 
@@ -102,7 +103,8 @@ var city = {
       container: 'map',
       style: 'mapbox://styles/mapbox/dark-v8',
       center: city.center,
-      zoom: city.zoom
+      zoom: city.zoom,
+      pitch: 65
     });
 
     // Get viewport boundaries
@@ -115,21 +117,10 @@ var city = {
     //    this.map.setMaxBounds(zoomBounds);
 
     // Create drivers
-    this.spawnDrivers(7);
+    this.spawnDrivers(1);
 
     // Create riders
-    this.spawnRiders(30);
-
-    //    this.map.flyTo({
-    //      center: city.center,
-    //      zoom: city.zoom - 2,
-    //      bearing: 0,
-    //      speed: 0.1,
-    //      curve: 1,
-    //      easing: function (t) {
-    //        return t;
-    //      }
-    //    });
+    this.spawnRiders(20);
 
     this.map.on('load', function () {
       cb();

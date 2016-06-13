@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>COMMUNE: heaven</title>
+  <title>COMMUNE: stalker</title>
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@pwr_studio" />
@@ -42,43 +42,11 @@
     </div>
 
     <div id='drivers' class='drivers info-box'>
-      <div><strong>DRIVERS</strong></div>
-      <table id='drivers-table' class="table table-condensed">
-        <th><strong>Name</strong></th>
-        <th><strong>Trips</strong></th>
-        <th><strong>Shares</strong></th>
-        <th><strong>%</strong></th>
-      </table>
+      <div><strong><span id='name'></span></strong></div>
+      <div>Validated trips: <strong><span id='trips'></span></strong></div>
+      <div>Shares: <strong><span id='shares'></span></strong></div>
     </div>
 
-    <div id='riders' class='riders info-box'>
-      <div><strong>PASSENGERS</strong></div>
-      <table id='riders-table' class="table table-condensed">
-        <th><strong>Name</strong></th>
-        <th><strong>Trips</strong></th>
-        <th><strong>Shares</strong></th>
-        <th><strong>%</strong></th>
-      </table>
-    </div>
-
-    <div id='rides' class='rides info-box'>
-      <div><strong>RIDES</strong></div>
-      <table id='ride-table' class="table table-condensed">
-        <th><strong>ID</strong></th>
-        <th><strong>Distance</strong></th>
-        <th><strong>Shares</strong></th>
-        <tbody class='ride-table-body'>
-        </tbody>
-      </table>
-    </div>
-
-    <div id='ownership' class='ownership'>
-      <div class='own-drivers'>Driver ownership: <span id='driver-ownership'></span></div>
-      <div class='own-riders'>Rider ownership: <span id='rider-ownership'></span></div>
-      <div class='own-bar'>
-        <div id='own-inner' class='own-inner'></div>
-      </div>
-    </div>
 
     <div id='map' class='map'></div>
 
@@ -90,12 +58,8 @@
       </svg>
     </div>
 
-    <div class='bar'></div>
-
   </div>
 
-  <!--  <script src='bower_components/jquery/dist/jquery.min.js'></script>-->
-  <!--  <script src='bower_components/notifyjs/dist/notify.js'></script>-->
   <script src='app.min.js'></script>
 
 </body>

@@ -4,7 +4,6 @@
     color: $background-color;
   }
 }
-
 body {
   background: $background-color;
   color: $main-color;
@@ -14,7 +13,6 @@ body {
   font-family: "SanFranciscoDisplay-Light", sans-serif;
   @include screen-size('small') {}
 }
-
 a {
   color: $main-color;
   text-decoration: none;
@@ -28,7 +26,6 @@ a {
     color: $main-color;
   }
 }
-
 .map {
   position: fixed;
   top: 0;
@@ -37,7 +34,6 @@ a {
   height: 100vh;
   overflow: hidden;
 }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -48,25 +44,22 @@ a {
   z-index: 100;
   display: none;
 }
-
 strong {
   font-family: "SanFranciscoDisplay-Medium", sans-serif;
 }
-
 .container {
   margin-top: 10%;
 }
-
 .info-box {
   position: fixed;
   z-index: 10;
   width: $panel-width;
   right: 0;
-  height: 150px;
   //  max-height: 25vh;
   padding: 5px;
   top: 30px;
-  width: calc(100% / 3);
+  width: 100%;
+  ;
   overflow-x: hidden;
   overflow-y: scroll;
   opacity: 0.9;
@@ -75,25 +68,30 @@ strong {
     height: 100%;
   }
 }
-
 .drivers {
-  left: 0;
-  background: $driver-color;
+  left: 20px;
+  //  background: $driver-color;
   color: black !important;
+  div {
+    font-size: 22px;
+    line-height: 22px;
+    background: $driver-color;
+    padding: 20px;
+    margin: 10px;
+    float: left;
+    border-radius: 5px;
+  }
 }
-
 .riders {
   left: calc(100% / 1.5);
   background: $passenger-color;
   color: black !important;
 }
-
 .rides {
   left: calc(100% / 3);
   background: $ride-color;
   color: black !important;
 }
-
 .stats {
   position: fixed;
   top: 0;
@@ -111,7 +109,6 @@ strong {
     line-height: 30px;
   }
 }
-
 .bar {
   position: fixed;
   bottom: 0;
@@ -127,7 +124,6 @@ strong {
     float: left;
   }
 }
-
 .panel {
   margin: 10px;
   background: grey;
@@ -154,11 +150,9 @@ strong {
     }
   }
 }
-
 #app {
   display: none;
 }
-
 #start {
   @include center;
   width: 100vw;
@@ -169,7 +163,6 @@ strong {
   line-height: 100vh;
   border-radius: 0;
 }
-
 .logo {
   width: 200px;
   max-width: 90%;
@@ -180,26 +173,22 @@ strong {
     fill: white;
   }
 }
-
 .corner-logo {
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   left: 20px;
 }
-
 .bottom {
   fill: $passenger-color !important;
 }
-
 tbody {
   border-top: 0 !important;
 }
-
 .log {
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   right: 20px;
-  width: 300px;
+  width: 500px;
   z-index: 10000;
   pointer-events: none;
   display: table;
@@ -207,14 +196,21 @@ tbody {
     background: white;
     color: black;
     width: 100%;
-    padding: 10px;
-    margin: 10px;
-    font-size: 14px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 22px;
+    line-height: 22px;
     border-radius: 5px;
     display: none;
     vertical-align: bottom;
+    transition: opacity 0.5s ease;
+    opacity: 1;
     &:nth-child(-n+1) {
       display: table-cell;
+    }
+    &.hidden {
+      transition: opacity 0.5s ease;
+      opacity: 0;
     }
     &.request {
       background: $passenger-color;
@@ -228,13 +224,8 @@ tbody {
     &.pick-up {
       background: $ride-color;
     }
-    &.no-drivers {
-      background: red;
-      color: white;
-    }
   }
 }
-
 .ownership {
   position: fixed;
   top: 180px;
@@ -266,7 +257,6 @@ tbody {
     height: 100%;
   }
 }
-
 #own-inner {
   height: 100%;
   width: 50%;

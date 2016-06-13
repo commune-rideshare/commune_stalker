@@ -5,10 +5,11 @@
 global.$ = require("jquery");
 
 var config = require("./config"),
-    mapboxgl = require('mapbox-gl'),
-    moment = require('moment'),
-    city = require("./city"),
-    speed = 200;
+  mapboxgl = require('mapbox-gl'),
+  moment = require('moment'),
+  city = require("./city"),
+  turf = require('turf'),
+  speed = 800;
 
 require("moment-duration-format");
 
@@ -64,15 +65,47 @@ var draw = {
 
         newPosition.coordinates = data.route.geometry.coordinates[i];
 
-        city.map.getSource(data.driver.id).setData(newPosition);
+        // Set bearing
+        if (i < (steps - 1)) {
+
+          console.log('i', i);
+          console.log('steps', steps);
+
+          city.map.easeTo({
+            center: newPosition.coordinates,
+            bearing: turf.bearing({
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": data.route.geometry.coordinates[i]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": data.route.geometry.coordinates[i + 1]
+              }
+            })
+          });
+
+          city.map.getSource(data.driver.id).setData(newPosition);
+
+        } else {
+
+          city.map.getSource(data.driver.id).setData(newPosition);
+
+        }
 
         i++;
 
         if (i > steps) {
+
+          console.log('done');
+
           clearInterval(animation);
-          setTimeout(function () {
-            cb();
-          }, 1000);
+
+          cb();
+
         }
       }, speed);
 
@@ -97,9 +130,8 @@ var draw = {
         "source": data.routeId,
         "layout": {},
         "paint": {
-          "line-color": config.workColor,
-          "line-width": 2,
-          //          "line-opacity": ,
+          "line-color": data.color,
+          "line-width": 4,
           "line-dasharray": [2, 1]
         }
       });
