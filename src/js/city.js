@@ -120,7 +120,7 @@ var city = {
     this.spawnDrivers(1);
 
     // Create riders
-    this.spawnRiders(20);
+    this.spawnRiders(30);
 
     this.map.on('load', function () {
       cb();

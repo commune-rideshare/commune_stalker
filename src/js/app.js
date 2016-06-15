@@ -42,7 +42,7 @@
     $('#start').click(function () {
 
       // Launch fullscreen
-      //      launchIntoFullscreen(document.documentElement);
+      launchIntoFullscreen(document.documentElement);
 
       // Hide the start button
       $('#start').hide();
@@ -100,6 +100,7 @@
 
             // If the rider is already in transit, break
             if (city.riders[riderIndex].inTransit) {
+              console.log('in transit');
               return;
             }
 
@@ -234,6 +235,13 @@
                       // Update view with driver trips
                       $('#trips')
                         .text(city.drivers[driverIndex].trips);
+                      
+                      //
+                      // UPDATE RIDER
+                      //
+                      
+                      // Set state to not in transit
+                      city.riders[riderIndex].inTransit = false;
 
                       //Update ownership percentage
                       calculateOwnershipPercentage();
